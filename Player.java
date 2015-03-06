@@ -1,11 +1,13 @@
 public class Player
 {
+  Hand playerHand = new Hand();
   public Player()
   {
   }
   
   String returnstuff()
   {
-    return "test";
+    playerHand.printHand();
+    return "";
   }
 }

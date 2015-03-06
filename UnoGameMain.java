@@ -37,7 +37,8 @@ public class UnoGameMain
       
       if(programStep == 1)
       {
-        
+        player1.returnstuff();
+        player2.returnstuff();
       }
       
     }

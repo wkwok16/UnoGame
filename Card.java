@@ -10,6 +10,12 @@ public class Card
   
   public String returnType()
   {
-    return "";
+    String[] typeCard = {"Red", "Blue", "Green", "Yellow", "Wild", "Wild Draw 2", "Wild Draw 4"};
+    return typeCard[type];
+  }
+  
+  public int returnNumber()
+  {
+    return number;
   }
 }

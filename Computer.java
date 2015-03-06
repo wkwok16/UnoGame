@@ -9,8 +9,5 @@ public class Computer extends Player
     return "testcomputer";
   }
   
-  Card stuff()
-  {
-    
-  }
+  
 }
