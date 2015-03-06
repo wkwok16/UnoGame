@@ -5,7 +5,7 @@ public class Player
   {
   }
   
-  String returnstuff()
+  public String returnstuff()
   {
     playerHand.printHand();
     return "";

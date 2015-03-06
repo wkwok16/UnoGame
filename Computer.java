@@ -4,7 +4,7 @@ public class Computer extends Player
   {
   }
   
-  String returnstuff()
+  public String returnstuff()
   {
     return "testcomputer";
   }

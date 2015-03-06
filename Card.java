@@ -11,7 +11,11 @@ public class Card
   public String returnType()
   {
     String[] typeCard = {"Red", "Blue", "Green", "Yellow", "Wild", "Wild Draw 2", "Wild Draw 4"};
-    return typeCard[type];
+    if(type >= 4)
+    {
+      return typeCard[(int)(Math.random()*7)];
+    }
+    else return typeCard[type];
   }
   
   public int returnNumber()

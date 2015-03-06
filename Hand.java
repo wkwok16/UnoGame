@@ -2,12 +2,12 @@ import java.util.*;
 
 public class Hand
 {
-  ArrayList<Card> hand = new ArrayList<Card>();
+  private ArrayList<Card> hand = new ArrayList<Card>();
   public Hand()
   {
     for(int i = 0; i < 7; i++)
     {
-      hand.add(new Card((int)(Math.random()*7), (int)(Math.random()*9)));
+      hand.add(new Card((int)(Math.random()*7), (int)(Math.random()*9+1)));
     }
   }
   
@@ -19,5 +19,4 @@ public class Hand
     }
     System.out.println();
   }
-  
 }
