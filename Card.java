@@ -10,10 +10,12 @@ public class Card
   
   public String returnType()
   {
-    String[] typeCard = {"Red", "Blue", "Green", "Yellow", "Wild", "Wild Draw 2", "Wild Draw 4"};
+    String[] typeCard = {"Red", "Blue", "Green", "Yellow", " Wild", " Wild Draw 2", " Wild Draw 4"};
     if(type >= 4)
     {
-      return typeCard[(int)(Math.random()*7)];
+      int random = (int)(Math.random()*7);
+      if(random >= 4) number = 0;
+      return typeCard[random];
     }
     else return typeCard[type];
   }
