@@ -43,7 +43,7 @@ public class Player
   {
     for(int i = 0; i < hand.size(); i++)
     {
-      if(inText.equals(hand.get(i).returnType()+hand.get(i).returnNumber())) // If card exists...
+      if(inText.equals(hand.get(i).returnCard())) // If card exists...
       {
         return true;
       }

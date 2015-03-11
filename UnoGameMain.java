@@ -69,19 +69,60 @@ public class UnoGameMain
           }
           else
           {
-            if(player1.playCard(inputStatement).substring(0,2).equals("["))
-              {
-                playerMove = 2;
-              }
-              else
+            if(player1.checkCard(inputStatement))
+            {
+              player1.playCard(inputStatement);
+              playerMove = 2;
+            }
+            else
+            {
+              System.out.println("Invalid Entry");
+              playerMove = 1;
+            }
+          }
+          
+          if(playerMove == 2)
+          {
+            player2.printHand();
+            System.out.println("Player 2, please play a card or [Draw]");
+            inputStatement = in.next();
+            if(inputStatement.equals("Draw"))
+            {
+              player2.drawCard();
+              System.out.println("Player 2, please play a card or [Pass]");
+              inputStatement = in.next();
+              if(inputStatement.equals("Pass"))
               {
                 playerMove = 1;
               }
+              else
+              {
+                if(player2.checkCard(inputStatement))
+                {
+                  player2.playCard(inputStatement);
+                  playerMove = 1;
+                }
+                else
+                {
+                  System.out.println("Invalid Entry");
+                  playerMove = 2;
+                }
+              }
+            }
+            else
+            {
+              if(player2.checkCard(inputStatement))
+              {
+                player2.playCard(inputStatement);
+                playerMove = 1;
+              }
+              else
+              {
+                System.out.println("Invalid Entry");
+                playerMove = 2;
+              }
+            }
           }
-        }
-        while(playerMove == 2)
-        {
-
         }
       }
     }

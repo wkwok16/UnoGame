@@ -8,7 +8,7 @@ public class Card
     type = inType;
     number = inNumber;
 
-    String[] typeCard = {"Red", "Blue", "Green", "Yellow", "Wild", "Wild Draw 2", "Wild Draw 4"};
+    String[] typeCard = {"R", "B", "G", "Y", "W", "WD2", "WD4"};
     if(type >= 4)
     {
       int random = (int)(Math.random()*7); // Extra reset for wilds, so they appear less often
@@ -25,7 +25,12 @@ public class Card
   
   public String returnNumber() // Returns number of card as a string
   {
-    if(number != 0) return " "+number;
+    if(number != 0) return ""+number;
     else return "";
+  }
+  
+  public String returnCard()
+  {
+    return returnType()+returnNumber();
   }
 }
