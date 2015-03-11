@@ -39,10 +39,15 @@ public class Player
     this.printHand(); // Prints hand again so player sees their new card
   }
   
-  
-  public String returnstuff()
+  public boolean checkCard(String inText)
   {
-    printHand();
-    return "";
+    for(int i = 0; i < hand.size(); i++)
+    {
+      if(inText.equals(hand.get(i).returnType()+hand.get(i).returnNumber())) // If card exists...
+      {
+        return true;
+      }
+    }
+    return false;
   }
 }
