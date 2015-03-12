@@ -29,7 +29,7 @@ public class Card
     else return "";
   }
   
-  public String returnCard()
+  public String returnCard() // Returns card type and number
   {
     return returnType()+returnNumber();
   }

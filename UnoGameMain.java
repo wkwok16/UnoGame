@@ -1,5 +1,6 @@
 //Uno Game
 //William Kwok
+//Langraf
 
 import java.util.Scanner;
 public class UnoGameMain
@@ -7,15 +8,16 @@ public class UnoGameMain
   public static void main(String[] args)
   {
     int programStep = 0; // Step for simple turn executions for program
-    Player computer = new Computer();
-    Player startPlayer1 = new Player();
-    Player startPlayer2 = new Player();
-    Player player1 = new Player();
+    Pile gamePile = new Pile(); // Create new game pile
+    Player computer = new Computer(); // Create new computer player for first game type
+    Player startPlayer1 = new Player(); // Create new player for first and second game type
+    Player startPlayer2 = new Player(); // Create new player for second game type
+    Player player1 = new Player(); // Creates new players to be set to player 1 and 2 after program starts 
     Player player2 = new Player();
-    int playerMove = 1;
+    int playerMove = 1; // Creates starting player turn
     while(programStep == 0)
     {
-      Scanner in = new Scanner(System.in);
+      Scanner in = new Scanner(System.in); // Creates new scanner
       System.out.println("Do you want to play with a friend or a computer player? Type 1 for computer and 2 for friend");
       String playerGame = in.next();
       if(playerGame.equals("1")) // If single player, set player1 and player2 to computer and a player
@@ -81,7 +83,7 @@ public class UnoGameMain
             }
           }
           
-          if(playerMove == 2)
+          while(playerMove == 2)
           {
             player2.printHand();
             System.out.println("Player 2, please play a card or [Draw]");
