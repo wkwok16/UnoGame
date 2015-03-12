@@ -57,7 +57,7 @@ public class UnoGameMain
             }
             else
             {
-              if(player1.checkCard(inputStatement))
+              if(gamePile.pileCheck(inputStatement) && player1.checkCard(inputStatement))
               {
                 player1.playCard(inputStatement);
                 playerMove = 2;
@@ -71,7 +71,7 @@ public class UnoGameMain
           }
           else
           {
-            if(player1.checkCard(inputStatement))
+            if(gamePile.pileCheck(inputStatement) && player1.checkCard(inputStatement))
             {
               player1.playCard(inputStatement);
               playerMove = 2;
@@ -99,7 +99,7 @@ public class UnoGameMain
               }
               else
               {
-                if(player2.checkCard(inputStatement))
+                if(gamePile.pileCheck(inputStatement) && player2.checkCard(inputStatement))
                 {
                   player2.playCard(inputStatement);
                   playerMove = 1;
@@ -113,7 +113,7 @@ public class UnoGameMain
             }
             else
             {
-              if(player2.checkCard(inputStatement))
+              if(gamePile.pileCheck(inputStatement) && player2.checkCard(inputStatement))
               {
                 player2.playCard(inputStatement);
                 playerMove = 1;

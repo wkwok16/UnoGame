@@ -17,9 +17,9 @@ public class Pile
     return pileColor;
   }
   
-  public void setColorPile(String in) // Sets color of pile after card is played
+  public void setPileValues(String in) // Sets color of pile after card is played
   {
-    pileColor = in.substring(0,2);
+    pileColor = in.substring(0,1);
     pileNumber = in.substring(1);
   }
   
@@ -27,8 +27,26 @@ public class Pile
   {
     boolean colorEqual = false;
     boolean numberEqual = false;
-    if(in.substring(0,2).equals(pileColor))
-    {}
-    return false;
+    if(in.substring(0,1).equals(pileColor))
+    {
+      colorEqual = true;
+    }
+    if(in.substring(1).equals(pileNumber))
+    {
+      numberEqual = true;
+    }
+    if(colorEqual || numberEqual)
+    {
+      setPileValues(in);
+      pilesize++;
+      return true;
+    }
+    if(in.substring(0,1).equals("W") || pilesize == 0)
+    {
+      setPileValues(in);
+      pilesize++;
+      return true;
+    }
+    else return false;
   }
 }
