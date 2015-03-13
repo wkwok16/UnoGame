@@ -39,6 +39,22 @@ public class Player
     this.printHand(); // Prints hand again so player sees their new card
   }
   
+  public void drawForWild(String in)
+  {
+    if(in.equals("2"))
+    {
+      hand.add(new Card((int)(Math.random()*7), (int)(Math.random()*9+1))); 
+      hand.add(new Card((int)(Math.random()*7), (int)(Math.random()*9+1)));
+    }
+    else if(in.equals("4"))
+    {
+      hand.add(new Card((int)(Math.random()*7), (int)(Math.random()*9+1)));
+      hand.add(new Card((int)(Math.random()*7), (int)(Math.random()*9+1)));
+      hand.add(new Card((int)(Math.random()*7), (int)(Math.random()*9+1)));
+      hand.add(new Card((int)(Math.random()*7), (int)(Math.random()*9+1)));
+    }
+  }
+  
   public boolean checkCard(String inText)
   {
     for(int i = 0; i < hand.size(); i++)

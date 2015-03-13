@@ -1,5 +1,7 @@
+import java.util.Scanner;
 public class Pile
 {
+  Scanner in = new Scanner(System.in); // Creates new scanner
   private int pilesize = 0; 
   private String pileColor = "";
   private String pileNumber = "";
@@ -23,6 +25,18 @@ public class Pile
     pileNumber = in.substring(1);
   }
   
+  public boolean wildColor(String colorIn)
+  {
+    if(colorIn.equals("R") ||
+       colorIn.equals("Y") ||
+       colorIn.equals("G") ||
+       colorIn.equals("B"))
+    {
+      return true;
+    }
+    return false;   
+  }
+  
   public boolean pileCheck(String in)
   {
     boolean colorEqual = false;
@@ -35,13 +49,13 @@ public class Pile
     {
       numberEqual = true;
     }
-    if(colorEqual || numberEqual)
+    if(colorEqual || numberEqual || pilesize == 0)
     {
       setPileValues(in);
       pilesize++;
       return true;
     }
-    if(in.substring(0,1).equals("W") || pilesize == 0)
+    if(in.substring(0,1).equals("W"))
     {
       setPileValues(in);
       pilesize++;

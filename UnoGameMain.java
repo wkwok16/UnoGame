@@ -41,6 +41,7 @@ public class UnoGameMain
       if(programStep == 1)
       {
         String playerReturnStatement = "";
+        String wildInput = "";
         while(playerMove == 1)
         {
           player1.printHand();
@@ -60,6 +61,20 @@ public class UnoGameMain
               if(gamePile.pileCheck(inputStatement) && player1.checkCard(inputStatement))
               {
                 player1.playCard(inputStatement);
+                if(inputStatement.substring(0,1).equals("W"))
+                {
+                  System.out.println("Please pick a new color: [R],[Y],[G],[B]");
+                  wildInput = in.next();
+                  if(gamePile.wildColor(wildInput))
+                  {
+                    gamePile.setPileValues(wildInput+"0");
+                  }
+                  if(inputStatement.length() > 2)
+                  {
+                    player2.drawForWild(inputStatement.substring(2));
+                    player2.printHand();
+                  }
+                }
                 playerMove = 2;
               }
               else
@@ -74,6 +89,20 @@ public class UnoGameMain
             if(gamePile.pileCheck(inputStatement) && player1.checkCard(inputStatement))
             {
               player1.playCard(inputStatement);
+              if(inputStatement.substring(0,1).equals("W"))
+              {
+                System.out.println("Please pick a new color: [R],[Y],[G],[B]");
+                wildInput = in.next();
+                if(gamePile.wildColor(wildInput))
+                {
+                  gamePile.setPileValues(wildInput+"0");
+                }
+                if(inputStatement.length() > 2)
+                {
+                  player2.drawForWild(inputStatement.substring(2));
+                  player2.printHand();
+                }
+              }
               playerMove = 2;
             }
             else
@@ -102,6 +131,20 @@ public class UnoGameMain
                 if(gamePile.pileCheck(inputStatement) && player2.checkCard(inputStatement))
                 {
                   player2.playCard(inputStatement);
+                  if(inputStatement.substring(0,1).equals("W"))
+                  {
+                    System.out.println("Please pick a new color: [R],[Y],[G],[B]");
+                    wildInput = in.next();
+                    if(gamePile.wildColor(wildInput))
+                    {
+                      gamePile.setPileValues(wildInput+"0");
+                    }
+                    if(inputStatement.length() > 2)
+                    {
+                      player1.drawForWild(inputStatement.substring(2));
+                      player1.printHand();
+                    }
+                  }
                   playerMove = 1;
                 }
                 else
@@ -116,6 +159,20 @@ public class UnoGameMain
               if(gamePile.pileCheck(inputStatement) && player2.checkCard(inputStatement))
               {
                 player2.playCard(inputStatement);
+                if(inputStatement.substring(0,1).equals("W"))
+                {
+                  System.out.println("Please pick a new color: [R],[Y],[G],[B]");
+                  wildInput = in.next();
+                  if(gamePile.wildColor(wildInput))
+                  {
+                    gamePile.setPileValues(wildInput+"0");
+                  }
+                  if(inputStatement.length() > 2)
+                  {
+                    player1.drawForWild(inputStatement.substring(2));
+                    player1.printHand();
+                  }
+                }
                 playerMove = 1;
               }
               else
