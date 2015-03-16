@@ -76,6 +76,7 @@ public class UnoGameMain
               }
               if(inputStatement.equals("Pass"))
               {
+                playerStep = 3;
                 playerMove = 2;
               }
               else
@@ -93,22 +94,22 @@ public class UnoGameMain
                     else
                     {
                       wildInput = in.next();
-                    }
-                    if(gamePile.wildColor(wildInput))
+                    }          
+                    if(gamePile.wildColor(wildInput) && inputStatement.length() > 2)
                     {
                       gamePile.setWildPileValues(wildInput+"0");
-                    }
-                    if(inputStatement.length() > 2)
-                    {
                       player2.drawForWild(inputStatement.substring(2));
                       player2.printHand();
                     }
+                    else gamePile.setWildPileValues(wildInput+"0");
                   }
+                  playerStep = 3;
                   playerMove = 2;
                 }
                 else
                 {
                   System.out.println("Invalid Entry");
+                  playerStep = 3;
                   playerStep = 2;
                 }
               }
@@ -129,17 +130,16 @@ public class UnoGameMain
                 else
                 {
                   wildInput = in.next();
-                }
-                if(gamePile.wildColor(wildInput))
+                }          
+                if(gamePile.wildColor(wildInput) && inputStatement.length() > 2)
                 {
                   gamePile.setWildPileValues(wildInput+"0");
-                }
-                if(inputStatement.length() > 2)
-                {
                   player2.drawForWild(inputStatement.substring(2));
                   player2.printHand();
                 }
+                else gamePile.setWildPileValues(wildInput+"0");
               }
+              playerStep = 3;
               playerMove = 2;
             }
             else
@@ -165,6 +165,7 @@ public class UnoGameMain
                 inputStatement = in.next();
                 if(inputStatement.equals("Pass"))
                 {
+                  playerTwoStep = 3;
                   playerMove = 1;
                 }
                 else
@@ -176,16 +177,15 @@ public class UnoGameMain
                     {
                       System.out.println("Please pick a new color: [R],[Y],[G],[B]");
                       wildInput = in.next();
-                      if(gamePile.wildColor(wildInput))
+                      if(gamePile.wildColor(wildInput) && inputStatement.length() > 2)
                       {
                         gamePile.setWildPileValues(wildInput+"0");
-                      }
-                      if(inputStatement.length() > 2)
-                      {
                         player1.drawForWild(inputStatement.substring(2));
                         player1.printHand();
                       }
+                      else gamePile.setWildPileValues(wildInput+"0");
                     }
+                    playerTwoStep = 3;
                     playerMove = 1;
                   }
                   else
@@ -205,16 +205,15 @@ public class UnoGameMain
                 {
                   System.out.println("Please pick a new color: [R],[Y],[G],[B]");
                   wildInput = in.next();
-                  if(gamePile.wildColor(wildInput))
+                  if(gamePile.wildColor(wildInput) && inputStatement.length() > 2)
                   {
                     gamePile.setWildPileValues(wildInput+"0");
-                  }
-                  if(inputStatement.length() > 2)
-                  {
                     player1.drawForWild(inputStatement.substring(2));
                     player1.printHand();
                   }
+                  else gamePile.setWildPileValues(wildInput+"0");
                 }
+                playerTwoStep = 3;
                 playerMove = 1;
               }
               else
