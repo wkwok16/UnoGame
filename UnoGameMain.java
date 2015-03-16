@@ -9,7 +9,7 @@ public class UnoGameMain
   {
     int programStep = 0; // Step for simple turn executions for program
     Pile gamePile = new Pile(); // Create new game pile
-    Player computer = new Computer(); // Create new computer player for first game type
+    Computer computer = new Computer(); // Create new computer player for first game type
     Player startPlayer1 = new Player(); // Create new player for first and second game type
     Player startPlayer2 = new Player(); // Create new player for second game type
     Player player1 = new Player(); // Creates new players to be set to player 1 and 2 after program starts 
@@ -42,16 +42,34 @@ public class UnoGameMain
       {
         String playerReturnStatement = "";
         String wildInput = "";
+        System.out.println("The letter represents the color of the card, and the number represents the number.");
+        System.out.println("A wild allows the player to change the color the next player must play. The number after WD means the opposite player must draw that amount of cards before their turn.");
+        System.out.println("The player must play a card that is either the same color or number as the last played card. First to 0 cards wins!");
         while(playerMove == 1)
         {
-          player1.printHand();
           System.out.println("Player 1, please play a card or [Draw]");
-          String inputStatement = in.next();
+          player1.printHand();
+          String inputStatement = "";
+          if(playerGame.equals("1"))
+            {
+              inputStatement = player1.returnCard();
+            }
+            else
+            {
+              inputStatement = in.next();
+            }
           if(inputStatement.equals("Draw"))
           {
             player1.drawCard();
             System.out.println("Player 1, please play a card or [Pass]");
-            inputStatement = in.next();
+            if(playerGame.equals("1"))
+            {
+              inputStatement = player1.returnCard();
+            }
+            else
+            {
+              inputStatement = in.next();
+            }
             if(inputStatement.equals("Pass"))
             {
               playerMove = 2;
@@ -64,7 +82,14 @@ public class UnoGameMain
                 if(inputStatement.substring(0,1).equals("W"))
                 {
                   System.out.println("Please pick a new color: [R],[Y],[G],[B]");
-                  wildInput = in.next();
+                  if(playerGame.equals("1"))
+                  {
+                    wildInput = player1.returnWildColor();
+                  }
+                  else
+                  {
+                    wildInput = in.next();
+                  }
                   if(gamePile.wildColor(wildInput))
                   {
                     gamePile.setPileValues(wildInput+"0");
@@ -92,7 +117,14 @@ public class UnoGameMain
               if(inputStatement.substring(0,1).equals("W"))
               {
                 System.out.println("Please pick a new color: [R],[Y],[G],[B]");
-                wildInput = in.next();
+                if(playerGame.equals("1"))
+                {
+                  wildInput = player1.returnWildColor();
+                }
+                else
+                {
+                  wildInput = in.next();
+                }
                 if(gamePile.wildColor(wildInput))
                 {
                   gamePile.setPileValues(wildInput+"0");
@@ -114,8 +146,8 @@ public class UnoGameMain
           
           while(playerMove == 2)
           {
-            player2.printHand();
             System.out.println("Player 2, please play a card or [Draw]");
+            player2.printHand();
             inputStatement = in.next();
             if(inputStatement.equals("Draw"))
             {

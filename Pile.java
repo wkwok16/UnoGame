@@ -1,7 +1,5 @@
-import java.util.Scanner;
 public class Pile
 {
-  Scanner in = new Scanner(System.in); // Creates new scanner
   private int pilesize = 0; 
   private String pileColor = "";
   private String pileNumber = "";

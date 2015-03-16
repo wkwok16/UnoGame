@@ -66,4 +66,14 @@ public class Player
     }
     return false;
   }
+  
+  public String returnCard()
+  {
+    return "W";
+  }
+  
+  public String returnWildColor()
+  {
+    return "W";
+  }
 }

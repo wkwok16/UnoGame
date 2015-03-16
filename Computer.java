@@ -4,4 +4,13 @@ public class Computer extends Player
   {
   }
     
+  public String returnCard()
+  {
+    return "W";
+  }
+  
+  public String returnWildColor()
+  {
+    return "W";
+  }
 }
