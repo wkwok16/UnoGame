@@ -50,62 +50,67 @@ public class UnoGameMain
           System.out.println("Player 1, please play a card or [Draw]");
           player1.printHand();
           String inputStatement = "";
+          int playerStep = 1;
           if(playerGame.equals("1"))
-            {
-              inputStatement = player1.returnCard();
-            }
-            else
-            {
-              inputStatement = in.next();
-            }
+          {
+            inputStatement = player1.returnCard();
+          }
+          else
+          {
+            inputStatement = in.next();
+          }
           if(inputStatement.equals("Draw"))
           {
             player1.drawCard();
-            System.out.println("Player 1, please play a card or [Pass]");
-            if(playerGame.equals("1"))
+            playerStep = 2;
+            while(playerStep == 2)
             {
-              inputStatement = player1.returnCard();
-            }
-            else
-            {
-              inputStatement = in.next();
-            }
-            if(inputStatement.equals("Pass"))
-            {
-              playerMove = 2;
-            }
-            else
-            {
-              if(gamePile.pileCheck(inputStatement) && player1.checkCard(inputStatement))
+              System.out.println("Player 1, please play a card or [Pass]");
+              if(playerGame.equals("1"))
               {
-                player1.playCard(inputStatement);
-                if(inputStatement.substring(0,1).equals("W"))
-                {
-                  System.out.println("Please pick a new color: [R],[Y],[G],[B]");
-                  if(playerGame.equals("1"))
-                  {
-                    wildInput = player1.returnWildColor();
-                  }
-                  else
-                  {
-                    wildInput = in.next();
-                  }
-                  if(gamePile.wildColor(wildInput))
-                  {
-                    gamePile.setPileValues(wildInput+"0");
-                  }
-                  if(inputStatement.length() > 2)
-                  {
-                    player2.drawForWild(inputStatement.substring(2));
-                    player2.printHand();
-                  }
-                }
+                inputStatement = player1.returnCard();
+              }
+              else
+              {
+                inputStatement = in.next();
+              }
+              if(inputStatement.equals("Pass"))
+              {
                 playerMove = 2;
               }
               else
               {
-                System.out.println("Invalid Entry");
-                playerMove = 1;
+                if(gamePile.pileCheck(inputStatement) && player1.checkCard(inputStatement))
+                {
+                  player1.playCard(inputStatement);
+                  if(inputStatement.substring(0,1).equals("W"))
+                  {
+                    System.out.println("Please pick a new color: [R],[Y],[G],[B]");
+                    if(playerGame.equals("1"))
+                    {
+                      wildInput = player1.returnWildColor();
+                    }
+                    else
+                    {
+                      wildInput = in.next();
+                    }
+                    if(gamePile.wildColor(wildInput))
+                    {
+                      gamePile.setPileValues(wildInput+"0");
+                    }
+                    if(inputStatement.length() > 2)
+                    {
+                      player2.drawForWild(inputStatement.substring(2));
+                      player2.printHand();
+                    }
+                  }
+                  playerMove = 2;
+                }
+                else
+                {
+                  System.out.println("Invalid Entry");
+                  playerStep = 2;
+                }
               }
             }
           }
@@ -149,40 +154,45 @@ public class UnoGameMain
             System.out.println("Player 2, please play a card or [Draw]");
             player2.printHand();
             inputStatement = in.next();
+            int playerTwoStep = 1;
             if(inputStatement.equals("Draw"))
             {
               player2.drawCard();
-              System.out.println("Player 2, please play a card or [Pass]");
-              inputStatement = in.next();
-              if(inputStatement.equals("Pass"))
+              playerTwoStep = 2;
+              while(playerTwoStep == 2)
               {
-                playerMove = 1;
-              }
-              else
-              {
-                if(gamePile.pileCheck(inputStatement) && player2.checkCard(inputStatement))
+                System.out.println("Player 2, please play a card or [Pass]");
+                inputStatement = in.next();
+                if(inputStatement.equals("Pass"))
                 {
-                  player2.playCard(inputStatement);
-                  if(inputStatement.substring(0,1).equals("W"))
-                  {
-                    System.out.println("Please pick a new color: [R],[Y],[G],[B]");
-                    wildInput = in.next();
-                    if(gamePile.wildColor(wildInput))
-                    {
-                      gamePile.setPileValues(wildInput+"0");
-                    }
-                    if(inputStatement.length() > 2)
-                    {
-                      player1.drawForWild(inputStatement.substring(2));
-                      player1.printHand();
-                    }
-                  }
                   playerMove = 1;
                 }
                 else
                 {
-                  System.out.println("Invalid Entry");
-                  playerMove = 2;
+                  if(gamePile.pileCheck(inputStatement) && player2.checkCard(inputStatement))
+                  {
+                    player2.playCard(inputStatement);
+                    if(inputStatement.substring(0,1).equals("W"))
+                    {
+                      System.out.println("Please pick a new color: [R],[Y],[G],[B]");
+                      wildInput = in.next();
+                      if(gamePile.wildColor(wildInput))
+                      {
+                        gamePile.setPileValues(wildInput+"0");
+                      }
+                      if(inputStatement.length() > 2)
+                      {
+                        player1.drawForWild(inputStatement.substring(2));
+                        player1.printHand();
+                      }
+                    }
+                    playerMove = 1;
+                  }
+                  else
+                  {
+                    System.out.println("Invalid Entry");
+                    playerTwoStep = 2;
+                  }
                 }
               }
             }
