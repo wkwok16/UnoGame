@@ -96,7 +96,7 @@ public class UnoGameMain
                     }
                     if(gamePile.wildColor(wildInput))
                     {
-                      gamePile.setPileValues(wildInput+"0");
+                      gamePile.setWildPileValues(wildInput+"0");
                     }
                     if(inputStatement.length() > 2)
                     {
@@ -132,7 +132,7 @@ public class UnoGameMain
                 }
                 if(gamePile.wildColor(wildInput))
                 {
-                  gamePile.setPileValues(wildInput+"0");
+                  gamePile.setWildPileValues(wildInput+"0");
                 }
                 if(inputStatement.length() > 2)
                 {
@@ -178,7 +178,7 @@ public class UnoGameMain
                       wildInput = in.next();
                       if(gamePile.wildColor(wildInput))
                       {
-                        gamePile.setPileValues(wildInput+"0");
+                        gamePile.setWildPileValues(wildInput+"0");
                       }
                       if(inputStatement.length() > 2)
                       {
@@ -207,7 +207,7 @@ public class UnoGameMain
                   wildInput = in.next();
                   if(gamePile.wildColor(wildInput))
                   {
-                    gamePile.setPileValues(wildInput+"0");
+                    gamePile.setWildPileValues(wildInput+"0");
                   }
                   if(inputStatement.length() > 2)
                   {
@@ -223,9 +223,20 @@ public class UnoGameMain
                 playerMove = 2;
               }
             }
+          } 
+          if(player1.handSizeZero() || player2.handSizeZero())
+          {
+            programStep = 2;
           }
         }
       }
+      
+      if(programStep == 2)
+      {
+        System.out.println("test");
+        
+      }
+      
     }
   }
 }

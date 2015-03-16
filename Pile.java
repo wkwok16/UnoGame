@@ -19,10 +19,16 @@ public class Pile
   
   public void setPileValues(String in) // Sets color of pile after card is played
   {
-    if(in.equals("R") ||
-       in.equals("Y") ||
-       in.equals("G") ||
-       in.equals("B"))
+    pileColor = in.substring(0,1);
+    pileNumber = in.substring(1);
+  }
+  
+  public void setWildPileValues(String in)
+  {
+    if(in.equals("R0") ||
+       in.equals("Y0") ||
+       in.equals("G0") ||
+       in.equals("B0"))
     {
       pileColor = in.substring(0,1);
       pileNumber = in.substring(1);

@@ -19,6 +19,15 @@ public class Player
     System.out.println();
   }
   
+  public boolean handSizeZero()
+  {
+    if(hand.size() == 0)
+    {
+      return true;
+    }
+    else return false;
+  }
+  
   public String playCard(String inText) // Plays card; gets card value from user input
   {
     for(int i = 0; i < hand.size(); i++)
