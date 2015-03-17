@@ -19,13 +19,14 @@ public class Player
     System.out.println();
   }
   
-  public boolean handSizeZero()
+  public void printHandSize()
   {
-    if(hand.size() == 0)
-    {
-      return true;
-    }
-    else return false;
+    System.out.println(hand.size());
+  }
+  
+  public int handSizeZero()
+  {
+    return hand.size();
   }
   
   public String playCard(String inText) // Plays card; gets card value from user input

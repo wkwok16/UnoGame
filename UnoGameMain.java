@@ -47,6 +47,11 @@ public class UnoGameMain
         System.out.println("The player must play a card that is either the same color or number as the last played card. First to 0 cards wins!");
         while(playerMove == 1)
         {
+          if(player1.handSizeZero() == 0 || player2.handSizeZero() == 0)
+          {
+            programStep = 2;
+          }
+          player1.printHandSize();
           System.out.println("Player 1, please play a card or [Draw]");
           player1.printHand();
           String inputStatement = "";
@@ -109,7 +114,6 @@ public class UnoGameMain
                 else
                 {
                   System.out.println("Invalid Entry");
-                  playerStep = 3;
                   playerStep = 2;
                 }
               }
@@ -151,6 +155,10 @@ public class UnoGameMain
           
           while(playerMove == 2)
           {
+            if(player1.handSizeZero() == 0|| player2.handSizeZero() == 0D)
+            {
+              programStep = 2;
+            }
             System.out.println("Player 2, please play a card or [Draw]");
             player2.printHand();
             inputStatement = in.next();
@@ -223,19 +231,12 @@ public class UnoGameMain
               }
             }
           } 
-          if(player1.handSizeZero() || player2.handSizeZero())
+          if(programStep == 2)
           {
-            programStep = 2;
+            System.out.println("test");
           }
         }
-      }
-      
-      if(programStep == 2)
-      {
-        System.out.println("test");
-        
-      }
-      
+      } 
     }
   }
 }

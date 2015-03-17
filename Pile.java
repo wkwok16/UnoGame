@@ -23,7 +23,7 @@ public class Pile
     pileNumber = in.substring(1);
   }
   
-  public void setWildPileValues(String in)
+  public void setWildPileValues(String in) // Sets values for wilds if input is correctly input...
   {
     if(in.equals("R0") ||
        in.equals("Y0") ||
@@ -33,7 +33,7 @@ public class Pile
       pileColor = in.substring(0,1);
       pileNumber = in.substring(1);
     }
-    else 
+    else  // otherwise sets a default value
     {
       System.out.println("Invalid entry for color detected. Setting to default color, RED");
       pileColor = "R";
@@ -41,7 +41,7 @@ public class Pile
     }
   }
   
-  public boolean wildColor(String colorIn)
+  public boolean wildColor(String colorIn) // Returns true or false if the input value is correct or not, to detect user input failure
   {
     if(colorIn.equals("R") ||
        colorIn.equals("Y") ||
@@ -53,7 +53,7 @@ public class Pile
     return false;   
   }
   
-  public boolean pileCheck(String in)
+  public boolean pileCheck(String in) // Checks what the top of the pile is, and if the input card is equal to it in either color or value
   {
     boolean colorEqual = false;
     boolean numberEqual = false;
@@ -65,13 +65,7 @@ public class Pile
     {
       numberEqual = true;
     }
-    if(colorEqual || numberEqual || pilesize == 0)
-    {
-      setPileValues(in);
-      pilesize++;
-      return true;
-    }
-    if(in.substring(0,1).equals("W"))
+    if(colorEqual || numberEqual || pilesize == 0 || in.substring(0,1).equals("W")) // If no cards have yet been placed in the pile, it returns true, so the first player can play a card
     {
       setPileValues(in);
       pilesize++;
