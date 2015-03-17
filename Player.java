@@ -19,12 +19,12 @@ public class Player
     System.out.println();
   }
   
-  public void printHandSize()
+  public void printHandSize() // Test function to see size of hand
   {
     System.out.println(hand.size());
   }
   
-  public int handSizeZero()
+  public int handSizeZero() // Function to detect for size 0 hand
   {
     return hand.size();
   }
@@ -49,23 +49,15 @@ public class Player
     this.printHand(); // Prints hand again so player sees their new card
   }
   
-  public void drawForWild(String in)
+  public void drawForWild(String in) // Amount of cards to draw for a wild-draw card being played
   {
-    if(in.equals("2"))
+    for(int i = 1; i <= Integer.parseInt(in); i++)
     {
-      hand.add(new Card((int)(Math.random()*7), (int)(Math.random()*9+1))); 
-      hand.add(new Card((int)(Math.random()*7), (int)(Math.random()*9+1)));
-    }
-    else if(in.equals("4"))
-    {
-      hand.add(new Card((int)(Math.random()*7), (int)(Math.random()*9+1)));
-      hand.add(new Card((int)(Math.random()*7), (int)(Math.random()*9+1)));
-      hand.add(new Card((int)(Math.random()*7), (int)(Math.random()*9+1)));
       hand.add(new Card((int)(Math.random()*7), (int)(Math.random()*9+1)));
     }
   }
   
-  public boolean checkCard(String inText)
+  public boolean checkCard(String inText) // Checks if card exists in hand
   {
     for(int i = 0; i < hand.size(); i++)
     {
@@ -77,12 +69,14 @@ public class Player
     return false;
   }
   
-  public String returnCard()
+  // Unused for regular player class
+  
+  public String returnCard() // Automatic return card, to be used specifically in computer player
   {
     return "W";
   }
   
-  public String returnWildColor()
+  public String returnWildColor() // Automatic color returner for computer player
   {
     return "W";
   }
