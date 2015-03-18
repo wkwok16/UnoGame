@@ -59,7 +59,7 @@ public class UnoGameMain
           int playerStep = 1; // Player step so program doesn't mess up, resets after each turn
           if(playerGame.equals("1")) // If computer player, returns a card using the computer's return command
           { 
-            inputStatement = player1.returnCard(1); 
+            inputStatement = player1.returnCard(gamePile.topCardReturn(), 1); 
           }
           else // Else if human player, input card
           {
@@ -75,7 +75,7 @@ public class UnoGameMain
               System.out.println("Player 1, please play a card or [Pass]"); // Asks player to play or pass
               if(playerGame.equals("1")) // Computer player 
               {
-                inputStatement = player1.returnCard(2); 
+                inputStatement = player1.returnCard(gamePile.topCardReturn(), 2); 
               }
               else
               {

@@ -23,7 +23,12 @@ public class Pile
       pileNumber = in.substring(1);
   }
   
-  public void pileTop()
+  public String topCardReturn()
+  {
+    return pileColor + pileNumber;
+  }
+  
+  public void pileTop() // Returns top of pile color and number
   {
     if(pilesize == 0)
     {
@@ -31,7 +36,7 @@ public class Pile
     }
     else
     {
-      System.out.println("The card on top of the pile is [" + pileColor + pileNumber + "]");
+      System.out.println("The card on top of the pile is [" + this.topCardReturn() + "]");
     }
   }
   
@@ -82,7 +87,8 @@ public class Pile
       if(in.substring(0,1).equals("R") ||
          in.substring(0,1).equals("Y") ||
          in.substring(0,1).equals("G") ||
-         in.substring(0,1).equals("B"))
+         in.substring(0,1).equals("B") ||
+         in.substring(0,1).equals("W"))
       {
         setPileValues(in);
         pilesize++;
