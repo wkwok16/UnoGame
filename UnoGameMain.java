@@ -41,23 +41,25 @@ public class UnoGameMain
       if(programStep == 1) // Program step 1, main game
       {
         String wildInput = ""; // Wild input so player can set wild color when playing a wild card
-        System.out.println("The letter represents the color of the card, and the number represents the number."); // Intro lines
+        System.out.println("Instructions:"); // Intro lines
+        System.out.println("The letter represents the color of the card, and the number represents the number.");
         System.out.println("A wild allows the player to change the color the next player must play. The number after WD means the opposite player must draw that amount of cards before their turn.");
         System.out.println("The player must play a card that is either the same color or number as the last played card. First to 0 cards wins!");
+        System.out.println("");
         while(playerMove == 1)
         {
           if(player1.handSizeZero() == 0 || player2.handSizeZero() == 0) // If any player's handsize is detected to be zero, immediately go to next step of program
           {
             programStep = 2;
           }
-          player1.printHandSize();
+          gamePile.pileTop();
           System.out.println("Player 1, please play a card or [Draw]"); // Asks player to play or draw
           player1.printHand(); // Print out hand to player (If computer, it will not print hand)
           String inputStatement = ""; // Creates input String so player can input after
           int playerStep = 1; // Player step so program doesn't mess up, resets after each turn
           if(playerGame.equals("1")) // If computer player, returns a card using the computer's return command
           { 
-            inputStatement = player1.returnCard(); //////////////////////////// May need to add int in to this to differenciate Draw/Pass turn
+            inputStatement = player1.returnCard(1); 
           }
           else // Else if human player, input card
           {
@@ -69,10 +71,11 @@ public class UnoGameMain
             playerStep = 2; // Program is stepped again
             while(playerStep == 2)
             {
+              gamePile.pileTop();
               System.out.println("Player 1, please play a card or [Pass]"); // Asks player to play or pass
               if(playerGame.equals("1")) // Computer player 
               {
-                inputStatement = player1.returnCard(); /////////////////////////////// May need to add int in to this to differenciate Draw/Pass turn
+                inputStatement = player1.returnCard(2); 
               }
               else
               {
@@ -106,6 +109,10 @@ public class UnoGameMain
                       player2.printHand();
                     }
                     else gamePile.setWildPileValues(wildInput+"0"); // If no Draw Wild, then pile is just set to color
+                  }
+                  if(player1.handSizeZero() == 0|| player2.handSizeZero() == 0)
+                  {
+                    programStep = 2;
                   }
                   playerStep = 3; // Ends turn and switches to other player
                   playerMove = 2;
@@ -142,6 +149,10 @@ public class UnoGameMain
                 }
                 else gamePile.setWildPileValues(wildInput+"0");
               }
+              if(player1.handSizeZero() == 0|| player2.handSizeZero() == 0)
+              {
+                programStep = 2;
+              }
               playerStep = 3;
               playerMove = 2;
             }
@@ -158,6 +169,7 @@ public class UnoGameMain
             {
               programStep = 2;
             }
+            gamePile.pileTop();
             System.out.println("Player 2, please play a card or [Draw]");
             player2.printHand();
             inputStatement = in.next();
@@ -168,6 +180,7 @@ public class UnoGameMain
               playerTwoStep = 2;
               while(playerTwoStep == 2)
               {
+                gamePile.pileTop();
                 System.out.println("Player 2, please play a card or [Pass]");
                 inputStatement = in.next();
                 if(inputStatement.equals("Pass"))
@@ -191,6 +204,10 @@ public class UnoGameMain
                         player1.printHand();
                       }
                       else gamePile.setWildPileValues(wildInput+"0");
+                    }
+                    if(player1.handSizeZero() == 0|| player2.handSizeZero() == 0)
+                    {
+                      programStep = 2;
                     }
                     playerTwoStep = 3;
                     playerMove = 1;
@@ -219,6 +236,10 @@ public class UnoGameMain
                     player1.printHand();
                   }
                   else gamePile.setWildPileValues(wildInput+"0");
+                }
+                if(player1.handSizeZero() == 0|| player2.handSizeZero() == 0)
+                {
+                  programStep = 2;
                 }
                 playerTwoStep = 3;
                 playerMove = 1;

@@ -19,8 +19,20 @@ public class Pile
   
   public void setPileValues(String in) // Sets color of pile after card is played
   {
-    pileColor = in.substring(0,1);
-    pileNumber = in.substring(1);
+      pileColor = in.substring(0,1);
+      pileNumber = in.substring(1);
+  }
+  
+  public void pileTop()
+  {
+    if(pilesize == 0)
+    {
+      System.out.println("The pile is empty. Please play any card you want!");
+    }
+    else
+    {
+      System.out.println("The card on top of the pile is [" + pileColor + pileNumber + "]");
+    }
   }
   
   public void setWildPileValues(String in) // Sets values for wilds if input is correctly input...
@@ -67,9 +79,16 @@ public class Pile
     }
     if(colorEqual || numberEqual || pilesize == 0 || in.substring(0,1).equals("W")) // If no cards have yet been placed in the pile, it returns true, so the first player can play a card
     {
-      setPileValues(in);
-      pilesize++;
-      return true;
+      if(in.substring(0,1).equals("R") ||
+         in.substring(0,1).equals("Y") ||
+         in.substring(0,1).equals("G") ||
+         in.substring(0,1).equals("B"))
+      {
+        setPileValues(in);
+        pilesize++;
+        return true;
+      }
+      else return false;
     }
     else return false;
   }

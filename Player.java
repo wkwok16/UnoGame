@@ -71,7 +71,7 @@ public class Player
   
   // Unused for regular player class
   
-  public String returnCard() // Automatic return card, to be used specifically in computer player
+  public String returnCard(int in) // Automatic return card, to be used specifically in computer player
   {
     return "W";
   }

@@ -4,7 +4,7 @@ public class Computer extends Player
   {
   }
     
-  public String returnCard()
+  public String returnCard(int in)
   {
     return "W";
   }
