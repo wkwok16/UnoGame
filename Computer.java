@@ -45,27 +45,27 @@ public class Computer extends Player
   
   public String returnCard(String pileTopCard, int in)
   {
-    String cardOutput = "";
+    String returnCard = "";
     int pickerStep = 1;
     
-    
+    /*
    cardOutput = handComputer.get(0).returnType() + handComputer.get(0).returnNumber();
    return cardOutput;
+    */
     
     
-    /*
     for(int i = 0; i < handComputer.size(); i++) // Goes through and looks for a playable card
     {
       if(pileTopCard.equals(""))
       {
         returnCard += handComputer.get(i).returnType() + handComputer.get(i).returnNumber();
-        handComputer.remove(i);
+       
         return returnCard;
       }
       else if(pileTopCard.substring(0,1).equals(handComputer.get(i).returnType()) || pileTopCard.substring(1).equals(handComputer.get(i).returnNumber()))
       {
         returnCard += handComputer.get(i).returnType() + handComputer.get(i).returnNumber();
-        handComputer.remove(i);
+        
         return returnCard;
       }
     }
@@ -74,7 +74,7 @@ public class Computer extends Player
       if(handComputer.get(i).returnType().substring(0,1).equals("W"))
       {
         returnCard += handComputer.get(i).returnType();
-        handComputer.remove(i);
+        
         return returnCard;
       }
     }
@@ -86,7 +86,7 @@ public class Computer extends Player
     
     else return "Pass"; // Returns pass if it cant find a card at all
     
-    */
+    
   }
   public boolean checkCard(String inText) // Checks if card exists in hand
   {
