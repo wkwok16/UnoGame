@@ -12,11 +12,7 @@ public class Computer extends Player
   
   public void printHand() // Prints full hand of cards
   {
-    for(int i = 0; i < handComputer.size(); i++)
-    {
-      System.out.print("["+handComputer.get(i).returnType()+handComputer.get(i).returnNumber()+"]");
-    }
-    System.out.println();
+    System.out.println("The computer is playing...");
   }
   
   public void printHandSize() // Test function to see size of hand
@@ -37,6 +33,7 @@ public class Computer extends Player
       {
         String returnText = "["+handComputer.get(i).returnType()+handComputer.get(i).returnNumber()+"] was played";
         handComputer.remove(i); // Removes card from hand arraylist
+        System.out.println("The computer has " + handComputer.size() + " cards left.");
         return returnText;
       }
     }
@@ -98,6 +95,19 @@ public class Computer extends Player
       }
     }
     return false;
+  }
+  
+    public void drawCard() // Adds a new card to the hand
+    {
+      handComputer.add(new Card((int)(Math.random()*7), (int)(Math.random()*9+1)));
+    }
+  
+  public void drawForWild(String in) // Amount of cards to draw for a wild-draw card being played
+  {
+    for(int i = 1; i <= Integer.parseInt(in); i++)
+    {
+      handComputer.add(new Card((int)(Math.random()*7), (int)(Math.random()*9+1)));
+    }
   }
   
   public String returnWildColor()

@@ -224,10 +224,12 @@ public class UnoGameMain
           ///////////////////////////////////////////////
           while(playerMove == 2) // All the same as playermove 1, but without checking for computer player.
           {
-            if(player1.handSizeZero() == 0|| player2.handSizeZero() == 0)
+            
+            if(computer.handSizeZero() == 0 || player1.handSizeZero() == 0 || player2.handSizeZero() == 0)
             {
               programStep = 2;
             }
+            
             gamePile.pileTop();
             System.out.println("Player 2, please play a card or [Draw]");
             player2.printHand();
@@ -260,12 +262,20 @@ public class UnoGameMain
                       if(gamePile.wildColor(wildInput) && inputStatement.length() > 2)
                       {
                         gamePile.setWildPileValues(wildInput+"0");
-                        player1.drawForWild(inputStatement.substring(2));
-                        player1.printHand();
+                        if(playerGame.equals("1"))
+                        {
+                          computer.drawForWild(inputStatement.substring(2));
+                        }
+                        else if(playerGame.equals("2"))
+                        {
+                          player1.drawForWild(inputStatement.substring(2));
+                          player1.printHand();
+                        }
                       }
                       else gamePile.setWildPileValues(wildInput+"0");
                     }
-                    if(player1.handSizeZero() == 0|| player2.handSizeZero() == 0)
+                    
+                    if(computer.handSizeZero() == 0 || player1.handSizeZero() == 0 || player2.handSizeZero() == 0)
                     {
                       programStep = 2;
                     }
@@ -293,12 +303,20 @@ public class UnoGameMain
                   if(gamePile.wildColor(wildInput) && inputStatement.length() > 2)
                   {
                     gamePile.setWildPileValues(wildInput+"0");
-                    player1.drawForWild(inputStatement.substring(2));
-                    player1.printHand();
+                    if(playerGame.equals("1"))
+                    {
+                      computer.drawForWild(inputStatement.substring(2));
+                    }
+                    else if(playerGame.equals("2"))
+                    {
+                      player1.drawForWild(inputStatement.substring(2));
+                      player1.printHand();
+                    }
                   }
                   else gamePile.setWildPileValues(wildInput+"0");
                 }
-                if(player1.handSizeZero() == 0|| player2.handSizeZero() == 0)
+                
+                if(computer.handSizeZero() == 0 || player1.handSizeZero() == 0 || player2.handSizeZero() == 0)
                 {
                   programStep = 2;
                 }
