@@ -7,7 +7,7 @@ public class Card
   {
     type = inType;
     number = inNumber;
-
+    
     String[] typeCard = {"R", "B", "G", "Y", "W", "WD2", "WD4"};
     if(type >= 4)
     {

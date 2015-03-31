@@ -10,7 +10,26 @@ public class Computer extends Player
     }
   }
   
-    public String playCard(String inText) // Plays card; gets card value from user input
+  public void printHand() // Prints full hand of cards
+  {
+    for(int i = 0; i < handComputer.size(); i++)
+    {
+      System.out.print("["+handComputer.get(i).returnType()+handComputer.get(i).returnNumber()+"]");
+    }
+    System.out.println();
+  }
+  
+  public void printHandSize() // Test function to see size of hand
+  {
+    System.out.println(handComputer.size());
+  }
+  
+  public int handSizeZero() // Function to detect for size 0 hand
+  {
+    return handComputer.size();
+  }
+  
+  public String playCard(String inText) // Plays card; gets card value from user input
   {
     for(int i = 0; i < handComputer.size(); i++)
     {
@@ -23,56 +42,66 @@ public class Computer extends Player
     }
     return "Invalid entry: Card not found"; // If card isn't found, returns this line
   }
-    
+  
   public String returnCard(String pileTopCard, int in)
   {
-    String returnCard = "";
-    if(pileTopCard.equals(""))
+    String cardOutput = "";
+    int pickerStep = 1;
+    
+    
+   cardOutput = handComputer.get(0).returnType() + handComputer.get(0).returnNumber();
+   return cardOutput;
+    
+    
+    /*
+    for(int i = 0; i < handComputer.size(); i++) // Goes through and looks for a playable card
     {
-      int randomCardChooser = (((int)(Math.random()*handComputer.size())));
-      returnCard = handComputer.get(randomCardChooser).returnType() + handComputer.get(randomCardChooser).returnNumber();
-      handComputer.remove(randomCardChooser);
-      return returnCard;
+      if(pileTopCard.equals(""))
+      {
+        returnCard += handComputer.get(i).returnType() + handComputer.get(i).returnNumber();
+        handComputer.remove(i);
+        return returnCard;
+      }
+      else if(pileTopCard.substring(0,1).equals(handComputer.get(i).returnType()) || pileTopCard.substring(1).equals(handComputer.get(i).returnNumber()))
+      {
+        returnCard += handComputer.get(i).returnType() + handComputer.get(i).returnNumber();
+        handComputer.remove(i);
+        return returnCard;
+      }
     }
-    else 
+    for(int i = 0; i < handComputer.size(); i++) // If it cant find a matching number either, return a wild
     {
-      for(int i = 0; i < handComputer.size(); i++) // Goes through and looks for a playable card
+      if(handComputer.get(i).returnType().substring(0,1).equals("W"))
       {
-        if(pileTopCard.substring(0,1).equals(handComputer.get(i).returnType()))
-        {
-          returnCard = handComputer.get(i).returnType() + handComputer.get(i).returnNumber();
-          handComputer.remove(i);
-          return returnCard;
-        }
+        returnCard += handComputer.get(i).returnType();
+        handComputer.remove(i);
+        return returnCard;
       }
-      for(int i = 0; i < handComputer.size(); i++) // If it cant find a matching letter, find a matching card
-      {
-        if(pileTopCard.substring(1).equals(handComputer.get(i).returnNumber()))
-        {
-          returnCard = handComputer.get(i).returnType() + handComputer.get(i).returnNumber();
-          handComputer.remove(i);
-          return returnCard;
-        }
-      }
-      for(int i = 0; i < handComputer.size(); i++) // If it cant find a matching number either, return a wild
-      {
-        if(handComputer.get(i).returnType().substring(0,1).equals("W"))
-        {
-          returnCard = handComputer.get(i).returnType();
-          handComputer.remove(i);
-          return returnCard;
-        }
-      }
-      if(in == 1)
-      {
-        return "Draw"; // Returns draw if it cant find anything that works
-      }
-      else return "Pass"; // Returns pass if it cant find a card at all
     }
+    
+    if(in == 1)
+    {
+      return "Draw"; // Returns draw if it cant find anything that works
+    }
+    
+    else return "Pass"; // Returns pass if it cant find a card at all
+    
+    */
+  }
+  public boolean checkCard(String inText) // Checks if card exists in hand
+  {
+    for(int i = 0; i < handComputer.size(); i++)
+    {
+      if(inText.equals(handComputer.get(i).returnCard())) // If card exists...
+      {
+        return true;
+      }
+    }
+    return false;
   }
   
   public String returnWildColor()
   {
-    return "W";
+    return "G";
   }
 }

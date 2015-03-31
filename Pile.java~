@@ -19,8 +19,15 @@ public class Pile
   
   public void setPileValues(String in) // Sets color of pile after card is played
   {
+    if(in.substring(0,1).equals("R") ||
+         in.substring(0,1).equals("Y") ||
+         in.substring(0,1).equals("G") ||
+         in.substring(0,1).equals("B") ||
+         in.substring(0,1).equals("W"))
+    {
       pileColor = in.substring(0,1);
       pileNumber = in.substring(1);
+    }
   }
   
   public String topCardReturn()
@@ -47,6 +54,7 @@ public class Pile
        in.equals("G0") ||
        in.equals("B0"))
     {
+      pilesize++;
       pileColor = in.substring(0,1);
       pileNumber = in.substring(1);
     }
@@ -90,8 +98,6 @@ public class Pile
          in.substring(0,1).equals("B") ||
          in.substring(0,1).equals("W"))
       {
-        setPileValues(in);
-        pilesize++;
         return true;
       }
       else return false;
