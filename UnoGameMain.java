@@ -41,7 +41,7 @@ public class UnoGameMain
           if(playerGame.equals("1"))
           {
             int playerStep = 1; // Player step so program doesn't mess up, resets after each turn
-            if(computer.handSizeZero() == 0 || player2.handSizeZero() == 0) programStep = 2; // If any player's handsize is detected to be zero, immediately go to next step of program
+            if(computer.handSizeZero() == 0 || player1.handSizeZero() == 0 || player2.handSizeZero() == 0) programStep = 2; // If any player's handsize is detected to be zero, immediately go to next step of program
             gamePile.pileTop();
             System.out.println("Player 1, please play a card or [Draw]"); // Asks player to play or draw
             computer.printHand(); // Print out hand to player (If computer, it will not print hand)
@@ -121,7 +121,7 @@ public class UnoGameMain
           else if(playerGame.equals("2"))
           {
             int playerStep = 1; // Player step so program doesn't mess up, resets after each turn
-            if(player1.handSizeZero() == 0 || player2.handSizeZero() == 0) programStep = 2; // If any player's handsize is detected to be zero, immediately go to next step of program
+            if(computer.handSizeZero() == 0 || player1.handSizeZero() == 0 || player2.handSizeZero() == 0) programStep = 2; // If any player's handsize is detected to be zero, immediately go to next step of program
             gamePile.pileTop();
             System.out.println("Player 1, please play a card or [Draw]"); // Asks player to play or draw
             player1.printHand(); // Print out hand to player (If computer, it will not print hand)
@@ -246,6 +246,7 @@ public class UnoGameMain
                       }
                       else gamePile.setWildPileValues(wildInput+"0");
                     }
+                    if(computer.handSizeZero() == 0 || player1.handSizeZero() == 0 || player2.handSizeZero() == 0) programStep = 2;
                     playerTwoStep = 3;
                     playerMove = 1;
                   }
@@ -282,6 +283,7 @@ public class UnoGameMain
                   }
                   else gamePile.setWildPileValues(wildInput+"0");
                 }
+                if(computer.handSizeZero() == 0 || player1.handSizeZero() == 0 || player2.handSizeZero() == 0) programStep = 2;
                 playerTwoStep = 3;
                 playerMove = 1;
               }
@@ -294,7 +296,11 @@ public class UnoGameMain
           } 
           if(programStep == 2) //////////////////////////////////////////////////Program step two, after game is finished
           {
-            System.out.println("test");
+            int winner = 0;
+            if(computer.handSizeZero() == 0 || player1.handSizeZero() == 0) winner = 1;
+            else if(player2.handSizeZero() == 0) winner = 2;
+            System.out.println("Player " + winner + " is the winner! Please reset to play again!");
+            System.exit(0);
           }
         }
       } 
