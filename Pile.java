@@ -6,17 +6,14 @@ public class Pile
   public Pile()
   {
   }
-  
   public int pileSizeReturn() // Returns size of pile to check if first turn
   {
     return pilesize;
   }
-  
   public String pileColorReturn() // Returns color of pile for next turn's check
   {
     return pileColor;
   }
-  
   public void setPileValues(String in) // Sets color of pile after card is played
   {
     if(in.substring(0,1).equals("R") ||
@@ -30,24 +27,15 @@ public class Pile
       pilesize++;
     }
   }
-  
   public String topCardReturn()
   {
     return pileColor + pileNumber;
   }
-  
   public void pileTop() // Returns top of pile color and number
   {
-    if(pilesize == 0)
-    {
-      System.out.println("The pile is empty. Please play any card you want!");
-    }
-    else
-    {
-      System.out.println("The card on top of the pile is [" + this.topCardReturn() + "]");
-    }
+    if(pilesize == 0) System.out.println("The pile is empty. Please play any card you want!");
+    else System.out.println("The card on top of the pile is [" + this.topCardReturn() + "]");
   }
-  
   public void setWildPileValues(String in) // Sets values for wilds if input is correctly input...
   {
     if(in.equals("R0") ||
@@ -66,41 +54,27 @@ public class Pile
       pileNumber = in.substring(1);
     }
   }
-  
   public boolean wildColor(String colorIn) // Returns true or false if the input value is correct or not, to detect user input failure
   {
     if(colorIn.equals("R") ||
        colorIn.equals("Y") ||
        colorIn.equals("G") ||
-       colorIn.equals("B"))
-    {
-      return true;
-    }
+       colorIn.equals("B")) return true;
     return false;   
   }
-  
   public boolean pileCheck(String in) // Checks what the top of the pile is, and if the input card is equal to it in either color or value
   {
     boolean colorEqual = false;
     boolean numberEqual = false;
-    if(in.substring(0,1).equals(pileColor))
-    {
-      colorEqual = true;
-    }
-    if(in.substring(1).equals(pileNumber))
-    {
-      numberEqual = true;
-    }
+    if(in.substring(0,1).equals(pileColor)) colorEqual = true;
+    if(in.substring(1).equals(pileNumber)) numberEqual = true;
     if(colorEqual || numberEqual || pilesize == 0 || in.substring(0,1).equals("W")) // If no cards have yet been placed in the pile, it returns true, so the first player can play a card
     {
       if(in.substring(0,1).equals("R") ||
          in.substring(0,1).equals("Y") ||
          in.substring(0,1).equals("G") ||
          in.substring(0,1).equals("B") ||
-         in.substring(0,1).equals("W"))
-      {
-        return true;
-      }
+         in.substring(0,1).equals("W")) return true;
       else return false;
     }
     else return false;

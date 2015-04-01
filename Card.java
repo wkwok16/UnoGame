@@ -7,7 +7,6 @@ public class Card
   {
     type = inType;
     number = inNumber;
-    
     String[] typeCard = {"R", "B", "G", "Y", "W", "WD2", "WD4"};
     if(type >= 4)
     {
@@ -17,18 +16,15 @@ public class Card
     }
     else returnTypeString = typeCard[type];
   }
-  
   public String returnType() // Grabs the type of card input and returns it as a string
   {
     return returnTypeString;
   }
-  
   public String returnNumber() // Returns number of card as a string
   {
     if(number != 0) return ""+number;
     else return "";
   }
-  
   public String returnCard() // Returns card type and number
   {
     return returnType()+returnNumber();
