@@ -112,6 +112,29 @@ public class Computer extends Player
   
   public String returnWildColor()
   {
-    return "G";
+    int[] colorCount = new int[4]; // R,G,B,Y
+    int colorGreatest = 0;
+    int colorCountGreatest = 0;
+    for(int i = 0; i < handComputer.size(); i++)
+    {
+      if(handComputer.get(i).returnType().equals("R")) colorCount[0]++;
+      else if(handComputer.get(i).returnType().equals("G")) colorCount[1]++;
+      else if(handComputer.get(i).returnType().equals("B")) colorCount[2]++;
+      else if(handComputer.get(i).returnType().equals("Y")) colorCount[3]++;
+    }
+    for(int i = 0; i < colorCount.length; i++)
+    {
+      if(colorCount[i] > colorCountGreatest)
+      {
+        colorCountGreatest = colorCount[i];
+        colorGreatest = i;
+      }
+    }
+    
+    if(colorGreatest == 0) return "R";
+    else if(colorGreatest == 1) return "G";
+    else if(colorGreatest == 2) return "B";
+    else if(colorGreatest == 3) return "Y";
+    else return "R";
   }
 }

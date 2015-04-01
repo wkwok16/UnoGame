@@ -41,6 +41,7 @@ public class UnoGameMain
         {
           if(playerGame.equals("1"))
           {
+            int playerStep = 1; // Player step so program doesn't mess up, resets after each turn
             if(computer.handSizeZero() == 0 || player2.handSizeZero() == 0) // If any player's handsize is detected to be zero, immediately go to next step of program
             {
               programStep = 2;
@@ -48,7 +49,6 @@ public class UnoGameMain
             gamePile.pileTop();
             System.out.println("Player 1, please play a card or [Draw]"); // Asks player to play or draw
             computer.printHand(); // Print out hand to player (If computer, it will not print hand)
-            int playerStep = 1; // Player step so program doesn't mess up, resets after each turn
             inputStatement = computer.returnCard(gamePile.topCardReturn(), 1);
             if(inputStatement.equals("Draw")) // If draw, then player will draw card, and have a card added to their hand
             {
@@ -132,6 +132,7 @@ public class UnoGameMain
           }
           else if(playerGame.equals("2"))
           {
+            int playerStep = 1; // Player step so program doesn't mess up, resets after each turn
             if(player1.handSizeZero() == 0 || player2.handSizeZero() == 0) // If any player's handsize is detected to be zero, immediately go to next step of program
             {
               programStep = 2;
@@ -139,7 +140,6 @@ public class UnoGameMain
             gamePile.pileTop();
             System.out.println("Player 1, please play a card or [Draw]"); // Asks player to play or draw
             player1.printHand(); // Print out hand to player (If computer, it will not print hand)
-            int playerStep = 1; // Player step so program doesn't mess up, resets after each turn
             inputStatement = in.next();
             if(inputStatement.equals("Draw")) // If draw, then player will draw card, and have a card added to their hand
             {
@@ -224,7 +224,7 @@ public class UnoGameMain
           ///////////////////////////////////////////////
           while(playerMove == 2) // All the same as playermove 1, but without checking for computer player.
           {
-            
+            int playerTwoStep = 1;
             if(computer.handSizeZero() == 0 || player1.handSizeZero() == 0 || player2.handSizeZero() == 0)
             {
               programStep = 2;
@@ -234,7 +234,7 @@ public class UnoGameMain
             System.out.println("Player 2, please play a card or [Draw]");
             player2.printHand();
             inputStatement = in.next();
-            int playerTwoStep = 1;
+            
             if(inputStatement.equals("Draw"))
             {
               player2.drawCard();
