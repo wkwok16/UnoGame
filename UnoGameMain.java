@@ -4,8 +4,7 @@
 //   William Kwok   //
 //                  //
 //////////////////////
-
-import java.util.Scanner;
+import java.util.Scanner; 
 public class UnoGameMain
 {
   public static void main(String[] args)
@@ -297,10 +296,10 @@ public class UnoGameMain
           if(programStep == 2) //////////////////////////////////////////////////Program step two, after game is finished
           {
             int winner = 0;
-            if(computer.handSizeZero() == 0 || player1.handSizeZero() == 0) winner = 1;
-            else if(player2.handSizeZero() == 0) winner = 2;
-            System.out.println("Player " + winner + " is the winner! Please reset to play again!");
-            System.exit(0);
+            if(computer.handSizeZero() == 0 || player1.handSizeZero() == 0) winner = 1; // Checks if player 1 has hand size be 0, sets winner to one
+            else if(player2.handSizeZero() == 0) winner = 2; // Checks player 2 has hand size 0
+            System.out.println("Player " + winner + " is the winner! Please reset to play again!"); // Prints out player winner
+            System.exit(0); // Ends program
           }
         }
       } 
