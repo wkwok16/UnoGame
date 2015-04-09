@@ -21,12 +21,28 @@ public class Player
         System.out.print("["+hand.get(i).returnType()+hand.get(i).returnNumber()+"]");
       }
       drawState = 0;
+      System.out.println();
     }
+    reorganizeHand();
+    System.out.println("Your cards are: ");
     for(int i = 0; i < hand.size(); i++)
     {
       System.out.print("["+hand.get(i).returnType()+hand.get(i).returnNumber()+"]");
     }
     System.out.println();
+  }
+  public void reorganizeHand()
+  {
+    ArrayList<Card> reorganizedHand = new ArrayList<Card>(); // Creates new hand arraylist
+    String[] typeCard = {"R", "B", "G", "Y", "W", "WD2", "WD4"};
+    for(int x = 0; x < 7; x++)
+    {
+      for(int i = 0; i < hand.size(); i++)
+      {
+        if(hand.get(i).returnType().equals(typeCard[x])) reorganizedHand.add(hand.get(i));
+      }
+    }
+    hand = reorganizedHand;
   }
   public void printHandSize() // Test function to see size of hand
   {

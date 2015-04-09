@@ -78,7 +78,6 @@ public class UnoGameMain
                       {
                         gamePile.setWildPileValues(wildInput+"0"); // Sets pile color to wild color
                         player2.drawForWild(inputStatement.substring(2)); // Opposite player draws cards
-                        player2.printHand();
                       }
                       else gamePile.setWildPileValues(wildInput+"0"); // If no Draw Wild, then pile is just set to color
                     }
@@ -114,7 +113,6 @@ public class UnoGameMain
                   {
                     gamePile.setWildPileValues(wildInput+"0");
                     player2.drawForWild(inputStatement.substring(2));
-                    player2.printHand();
                   }
                   else gamePile.setWildPileValues(wildInput+"0");
                 }
@@ -175,7 +173,6 @@ public class UnoGameMain
                       {
                         gamePile.setWildPileValues(wildInput+"0"); // Sets pile color to wild color
                         player2.drawForWild(inputStatement.substring(2)); // Opposite player draws cards
-                        player2.printHand();
                       }
                       else gamePile.setWildPileValues(wildInput+"0"); // If no Draw Wild, then pile is just set to color
                     }
@@ -205,7 +202,6 @@ public class UnoGameMain
                   {
                     gamePile.setWildPileValues(wildInput+"0");
                     player2.drawForWild(inputStatement.substring(2));
-                    player2.printHand();
                   }
                   else gamePile.setWildPileValues(wildInput+"0");
                 }
@@ -266,7 +262,6 @@ public class UnoGameMain
                         else if(playerGame.equals("2"))
                         {
                           player1.drawForWild(inputStatement.substring(2));
-                          player1.printHand();
                         }
                       }
                       else gamePile.setWildPileValues(wildInput+"0");
@@ -308,7 +303,6 @@ public class UnoGameMain
                     else if(playerGame.equals("2"))
                     {
                       player1.drawForWild(inputStatement.substring(2));
-                      player1.printHand();
                     }
                   }
                   else gamePile.setWildPileValues(wildInput+"0");
