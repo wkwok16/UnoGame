@@ -2,6 +2,8 @@ import java.util.*;
 public class Player
 {
   private ArrayList<Card> hand = new ArrayList<Card>(); // Creates new hand arraylist
+  private int drawState = 0;
+  private int wildCount = 0;
   public Player() // Creates new full 7 card hand at start of game
   {
     for(int i = 0; i < 7; i++)
@@ -11,6 +13,15 @@ public class Player
   }
   public void printHand() // Prints full hand of cards
   {
+    if(drawState == 1)
+    {
+      System.out.println("The cards you drew from the player's WD" + wildCount + " were:");
+      for(int i = (hand.size()-wildCount); i < hand.size(); i++)
+      {
+        System.out.print("["+hand.get(i).returnType()+hand.get(i).returnNumber()+"]");
+      }
+      drawState = 0;
+    }
     for(int i = 0; i < hand.size(); i++)
     {
       System.out.print("["+hand.get(i).returnType()+hand.get(i).returnNumber()+"]");
@@ -45,6 +56,8 @@ public class Player
   }
   public void drawForWild(String in) // Amount of cards to draw for a wild-draw card being played
   {
+    drawState = 1;
+    wildCount = Integer.parseInt(in);
     for(int i = 1; i <= Integer.parseInt(in); i++)
     {
       hand.add(new Card((int)(Math.random()*7), (int)(Math.random()*9+1)));
