@@ -18,6 +18,11 @@ public class UnoGameMain
       Player player2 = new Player();
       int playerMove = 1; // Creates starting player turn
       Scanner in = new Scanner(System.in); // Creates new scanner
+      System.out.println("Instructions:"); // Intro lines
+      System.out.println("The letter represents the color of the card, and the number represents the number.");
+      System.out.println("A wild allows the player to change the color the next player must play. The number after WD means the opposite player must draw that amount of cards before their turn.");
+      System.out.println("The player must play a card that is either the same color or number as the last played card. First to 0 cards wins!");
+      System.out.println("");
       System.out.println("Do you want to play with a friend or a computer player? Type 1 for computer and 2 for friend");
       String playerGame = in.next();
       if(playerGame.equals("1") || playerGame.equals("2")) programStep = 1; // Moves onto next step of program
@@ -30,11 +35,6 @@ public class UnoGameMain
       {
         String inputStatement = ""; // Creates input String so player can input after
         String wildInput = ""; // Wild input so player can set wild color when playing a wild card
-        System.out.println("Instructions:"); // Intro lines
-        System.out.println("The letter represents the color of the card, and the number represents the number.");
-        System.out.println("A wild allows the player to change the color the next player must play. The number after WD means the opposite player must draw that amount of cards before their turn.");
-        System.out.println("The player must play a card that is either the same color or number as the last played card. First to 0 cards wins!");
-        System.out.println("");
         while(playerMove == 1)
         {
           if(playerGame.equals("1"))

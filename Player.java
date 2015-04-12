@@ -13,17 +13,18 @@ public class Player
   }
   public void printHand() // Prints full hand of cards
   {
-    if(drawState == 1)
+    if(drawState == 1) // If card/cards were drawn...
     {
-      System.out.println("The cards you drew from the player's WD" + wildCount + " were:");
-      for(int i = (hand.size()-wildCount); i < hand.size(); i++)
+      if(wildCount == 1) System.out.println("The card you just drew was:"); // Checks if it was just a drawn card from player command or if it was a wild draw
+      else System.out.println("The cards you drew from the player's WD" + wildCount + " were:"); // Displays different things depending on tat
+      for(int i = (hand.size()-wildCount); i < hand.size(); i++) // Goes through hand for most recent cards drawn
       {
-        System.out.print("["+hand.get(i).returnType()+hand.get(i).returnNumber()+"]");
+        System.out.print("["+hand.get(i).returnType()+hand.get(i).returnNumber()+"]"); // Displays
       }
-      drawState = 0;
+      drawState = 0; // Ends the loop
       System.out.println();
     }
-    reorganizeHand();
+    reorganizeHand(); // Reorganizes hand before showing hand
     System.out.println("Your cards are: ");
     for(int i = 0; i < hand.size(); i++)
     {
@@ -33,16 +34,16 @@ public class Player
   }
   public void reorganizeHand()
   {
-    ArrayList<Card> reorganizedHand = new ArrayList<Card>(); // Creates new hand arraylist
-    String[] typeCard = {"R", "B", "G", "Y", "W", "WD2", "WD4"};
-    for(int x = 0; x < 7; x++)
+    ArrayList<Card> reorganizedHand = new ArrayList<Card>(); // Creates new organizedhand arraylist to drop into place of actual hand after reorganization
+    String[] typeCard = {"R", "B", "G", "Y", "W", "WD2", "WD4"}; // Card types for easy access in next loop
+    for(int x = 0; x < 7; x++) // Goes through card type
     {
-      for(int i = 0; i < hand.size(); i++)
+      for(int i = 0; i < hand.size(); i++) // Goes through hand and finds each type of card and orders it in same order as typeCard array
       {
         if(hand.get(i).returnType().equals(typeCard[x])) reorganizedHand.add(hand.get(i));
       }
     }
-    hand = reorganizedHand;
+    hand = reorganizedHand; // replaces hand with organizedhand arraylist
   }
   public void printHandSize() // Test function to see size of hand
   {
@@ -68,6 +69,8 @@ public class Player
   public void drawCard() // Adds a new card to the hand
   {
     hand.add(new Card((int)(Math.random()*7), (int)(Math.random()*9+1)));
+    drawState = 1;
+    wildCount = 1;
     this.printHand(); // Prints hand again so player sees their new card
   }
   public void drawForWild(String in) // Amount of cards to draw for a wild-draw card being played
