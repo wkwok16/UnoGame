@@ -13,10 +13,6 @@ public class Computer
   {
     System.out.println("The computer is playing...");
   }
-  public void printHandSize() // Test function to see size of hand
-  {
-    System.out.println(handComputer.size());
-  }
   public int handSizeZero() // Function to detect for size 0 hand
   {
     return handComputer.size();

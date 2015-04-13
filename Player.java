@@ -45,10 +45,6 @@ public class Player
     }
     hand = reorganizedHand; // replaces hand with organizedhand arraylist
   }
-  public void printHandSize() // Test function to see size of hand
-  {
-    System.out.println(hand.size());
-  }
   public int handSizeZero() // Function to detect for size 0 hand
   {
     return hand.size();
@@ -89,14 +85,5 @@ public class Player
       if(inText.equals(hand.get(i).returnCard())) return true; // if card exists, return true
     }
     return false;
-  }
-  // Unused for regular player class
-  public String returnCard(String pilein, int in) // Automatic return card, to be used specifically in computer player
-  {
-    return "W";
-  }
-  public String returnWildColor() // Automatic color returner for computer player
-  {
-    return "W";
   }
 }
